@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+	<!-- Enable features -->
+	<featureManager>
+		<feature>jakartaee-8.0</feature>
+		<feature>microProfile-3.3</feature>
+		<feature>restConnector-2.0</feature>		
+	</featureManager>
+
+	<!-- To access this server from a remote client add a host attribute to 
+		the following element, e.g. host="*" -->
+	<httpEndpoint id="defaultHttpEndpoint" httpPort="9090"
+		httpsPort="9443" />
+	
+	<quickStartSecurity userName="admin"
+                            userPassword="admin" />
+
+	<!-- Default SSL configuration enables trust for default certificates from 
+		the Java runtime -->
+	<ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+	
+	<variable name="WLP_DEBUG_REMOTE" value="y" />
+	
+    <dataSource id="mysqldatasource"
+                    jndiName="jdbc/usermanagementdb">
+        <jdbcDriver libraryRef="MySQLLib" />
+        <properties databaseName="recruit_times_db"
+                            serverName="localhost" password="admin1234" user="root"
+                            serverTimezone="UTC" portNumber="3306" />
+    </dataSource>
+
+    <library id="MySQLLib">
+        <file
+            name="C:/Users/harsha/Documents/mysql-connector-java-8.0.19.jar" />
+    </library>
+
+</server>
