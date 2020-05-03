@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/include/base-template.xhtml">
+	<ui:define name="head">
+		<title>Recruit Time: Sign up</title>
+		<h:outputStylesheet name="css/signin.css" />		
+		<h:outputScript name="js/common.js" target="body"/> 
+	</ui:define>
+	<ui:define name="body">
+
+		<h:form class="form-signin">
+
+			<h:graphicImage alt="" width="300"
+				value="#{resource['images/video_cover_highres_png.png']}" />
+
+			<h1 class="h5 mb-3 font-weight-normal"><b>Sign up</b></h1>			
+
+			<h:inputText id="email" value="#{registerController.email}"
+				label="Email" a:type="email" class="form-control"
+				a:placeholder="Email *" autocomplete="off" />
+			<h:message styleClass="err-message" for="email" />
+
+
+			<h:inputText id="first-name" value="#{registerController.firstName}"
+				label="First Name" a:type="text" class="form-control"
+				a:placeholder="Provide your first name *" />
+			<h:message styleClass="err-message" for="first-name" />
+
+			<h:inputText id="last-name" value="#{registerController.lastName}"
+				label="Last Name" a:type="text" class="form-control"
+				a:placeholder="Provide your last name *" />
+			<h:message styleClass="err-message" for="last-name" />
+
+
+
+			<h:inputSecret id="password" value="#{registerController.password}"
+				class="form-control" a:placeholder="Provide your password."
+				required="true" autocomplete="new-password"
+				requiredMessage="Please provide your password."
+				validatorMessage="Password should match retyped password and minimum length should be 6.">
+				<f:validateLength minimum="6"></f:validateLength>
+			</h:inputSecret>
+			<h:message styleClass="err-message" for="password" />
+
+			<h:inputSecret id="password2" class="form-control"
+				a:placeholder="Retype your password."
+				autocomplete="new-password"
+				requiredMessage="Please retype your password." />
+			<h:message styleClass="err-message" for="password2" />
+
+			<o:validateEqual components="password password2"
+				message="Passwords do not match!" showMessageFor="password2" />
+
+
+
+			<h:messages styleClass="err-message" globalOnly="true" layout="table"
+				style="color:red" />
+
+			<h:commandButton
+				class="btn btn-lg btn-primary btn-block signup-form-submit"
+				id="signup-form-submit" action="#{registerController.signUp()}"
+				value="Sign up">
+				<f:ajax execute="@form" render="@form" onevent="handleDisableButton" />
+			</h:commandButton>
+			
+			<div class="form-group loading-img-container">
+				<h:graphicImage alt="" width="100" class="loading-img" style="display:none"
+				value="#{resource['images/loader.gif']}" />
+			</div>
+
+			<div class="form-group">
+				<a href="/">Go to Home</a>
+			</div>
+
+			<div class="form-group">
+				<a href="/login.xhtml">Go to Log in</a>
+			</div>
+
+			<div class="form-group">
+				<a href="/includes/user/forgot.xhtml">Forgot password</a>
+			</div>
+
+		</h:form>
+		<!-- /.container -->
+		
+	</ui:define>
+</ui:composition>
+</html>

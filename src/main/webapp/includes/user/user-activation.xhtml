@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/include/base-template.xhtml">
+	<ui:define name="head">
+		<title>Recruit Time: User Activation</title>
+		<h:outputStylesheet name="css/signin.css" />
+	</ui:define>
+	<ui:define name="body">
+	
+		<div class="col-md-4 alert-message bg-light">
+
+			<h:graphicImage alt="" width="300"
+				value="#{resource['images/logo_lg.png']}" />
+
+			<h:panelGroup rendered="#{userActivationController.valid}">
+				<div class="alert alert-success" role="alert">Your account is successfully activated !</div>
+
+				<a href="/login.xhtml">Go to Log in</a>
+				
+				<br></br><br></br>
+			
+			</h:panelGroup>
+			
+			<h:panelGroup rendered="#{!userActivationController.valid}">
+				<div class="alert alert-danger" role="alert"> Activation failed!</div>
+
+				<p>You have provided either an invalid key or something else has gone wrong. Please try registering again or contact the site admin.</p>
+				
+			</h:panelGroup>
+
+			<a href="/">Go to Home</a> 
+
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+</html>

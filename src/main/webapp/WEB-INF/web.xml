@@ -50,5 +50,49 @@
 		<extension>eot</extension>
 		<mime-type>application/vnd.ms-fontobject</mime-type>
 	</mime-mapping>
+	
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	
+	<context-param>
+	    <param-name>
+	        javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+	    </param-name>
+	    <param-value>true</param-value>
+	</context-param>
+
+	<persistence-context-ref>
+		<persistence-context-ref-name>recruitDB/em</persistence-context-ref-name>
+		<persistence-unit-name>recruitDBPersistenceUnit</persistence-unit-name>
+	</persistence-context-ref>
+
+	<persistence-unit-ref>
+		<persistence-unit-ref-name>recruitDB/emf</persistence-unit-ref-name>
+		<persistence-unit-name>recruitDBPersistenceUnit</persistence-unit-name>
+	</persistence-unit-ref>
+
+	<listener>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
+	<error-page>
+        <error-code>404</error-code>
+        <location>error-404.xhtml</location>
+    </error-page>
 
 </web-app>

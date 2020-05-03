@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/include/base-template.xhtml">
+	<ui:define name="head">
+		<title>Recruit Time: Home</title>
+		<h:outputStylesheet name="css/signin.css" />
+	</ui:define>
+	<ui:define name="body">
+
+		<h:form id="login" class="form-signin">
+
+			<h:graphicImage alt="" width="300"
+				value="#{resource['images/logo_lg.png']}" />
+
+			<h1 class="h5 mb-3 font-weight-normal">Reset Password</h1>
+
+			<h:inputText id="email" value="#{forgotPasswordController.email}" label="Email"
+				type="email" styleClass="form-control" a:placeholder="Email address">
+			</h:inputText>
+			<h:message styleClass="err-message" for="email" />
+			
+			<h:messages styleClass="err-message" globalOnly="true" layout="table"/>
+
+			<h:commandButton class="btn btn-lg btn-primary btn-block signup-form-submit"
+				value="Send password reset link"
+				action="#{forgotPasswordController.sendLink()}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+
+
+			<div class="form-group">
+				<a href="/">Go to Home</a>
+			</div>
+			
+			<div class="form-group">
+				<a href="/login.xhtml">Go to Log in</a>
+			</div>
+
+			<div class="form-group">
+				<a href="/includes/user/register.xhtml">Sign up</a>
+			</div>
+
+		</h:form>
+		<!-- /.container -->
+	</ui:define>
+</ui:composition>
+</html>

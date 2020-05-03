@@ -4,7 +4,6 @@
 	<!-- Enable features -->
 	<featureManager>
 		<feature>jakartaee-8.0</feature>
-		<feature>microProfile-3.3</feature>
 		<feature>restConnector-2.0</feature>		
 	</featureManager>
 
@@ -23,9 +22,9 @@
 	<variable name="WLP_DEBUG_REMOTE" value="y" />
 	
     <dataSource id="mysqldatasource"
-                    jndiName="jdbc/usermanagementdb">
+                    jndiName="jdbc/user_management_db">
         <jdbcDriver libraryRef="MySQLLib" />
-        <properties databaseName="recruit_times_db"
+        <properties databaseName="user_management_db"
                             serverName="localhost" password="admin1234" user="root"
                             serverTimezone="UTC" portNumber="3306" />
     </dataSource>

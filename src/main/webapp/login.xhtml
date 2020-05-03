@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:o="http://omnifaces.org/ui" 
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/include/base-template.xhtml">
+	<ui:define name="head">
+		<title>Recruit Time: Login</title>
+		<h:outputStylesheet name="css/signin.css" />
+	</ui:define>
+	<ui:define name="body">
+
+		<h:form id="login" class="form-signin">
+
+			<h:graphicImage alt="" width="300"
+				value="#{resource['images/video_cover_highres_png.png']}" />
+
+			<h1 class="h5 mb-3 font-weight-normal">Please sign in</h1>
+
+
+			<h:inputText id="username" value="#{loginController.username}" label="Email"
+				type="email" class="form-control" a:placeholder="Email address"/>
+			<h:message styleClass="err-message" for="username" />
+
+			<h:inputSecret id="password" value="#{loginController.password}" label="Password"
+				type="password" class="form-control" a:placeholder="Password"/>
+			<h:message styleClass="err-message" for="password" />
+
+			<h:messages styleClass="err-message" globalOnly="true" layout="table"
+				style="color:red" />
+
+
+			<div class="checkbox mb-3">
+				<h:selectBooleanCheckbox id="rememberMe"
+					value="#{loginController.remember}" />
+				<h:outputLabel for="rememberMe" value=" Remember Me" />
+			</div>
+
+
+			<h:commandButton class="btn btn-lg btn-primary btn-block"
+				value="Login" action="#{loginController.submit}">
+				<f:ajax execute="@form" render="@form" onevent="handleDisableLoginButton"/>
+			</h:commandButton>
+
+			<div class="form-group">
+				<a href="/">Go to Home</a>
+			</div>
+
+			<div class="form-group">
+				<a href="includes/user/register.xhtml">
+				Sign up</a>
+			</div>
+
+			<div class="form-group">
+				<a href="includes/user/forgot.xhtml">Forgot password</a>
+			</div>
+
+
+			<p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+		</h:form>
+		<!-- /.container -->
+	</ui:define>
+</ui:composition>
+</html>
