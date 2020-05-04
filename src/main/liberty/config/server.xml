@@ -31,7 +31,7 @@
 
     <library id="MySQLLib">
         <file
-            name="C:/Users/harsha/Documents/mysql-connector-java-8.0.19.jar" />
+            name="mysql-connector-java-8.0.19.jar" />
     </library>
 
 </server>

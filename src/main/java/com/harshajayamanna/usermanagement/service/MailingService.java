@@ -2,6 +2,7 @@ package com.harshajayamanna.usermanagement.service;
 
 import java.util.Properties;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -11,7 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-@RequestScoped
+@Stateless
 public class MailingService {
 	
     private static final String senderEmail = "";//change with your sender email

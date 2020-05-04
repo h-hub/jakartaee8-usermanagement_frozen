@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(name = "recruitDBPersistenceUnit")
+	@PersistenceContext(name = "usermanagementDBPersistenceUnit")
 	private EntityManager em;
 
 	@Inject

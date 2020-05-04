@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
+
 import com.harshajayamanna.usermanagement.entity.Group;
 
 
@@ -14,7 +16,7 @@ public class GroupService implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(name = "recruitDBPersistenceUnit")
+	@PersistenceContext(name = "usermanagementDBPersistenceUnit")
     private EntityManager em;
 	
 	public Group getByName (String name) {
